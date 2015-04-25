@@ -45,6 +45,8 @@
 
 #pnl-index img{
 	cursor: pointer;
+	display: block;
+	float: left;
 }
 
 .selected{
