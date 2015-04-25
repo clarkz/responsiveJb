@@ -27,13 +27,19 @@
 							$('#' + targetId).addClass('selected').removeClass('unselected');
 						}, 100);
 					}, 1000);
+					
+					location.hash = '#pnl-image-showing-window';
+					return false;
+				});
+				$('#pnl-image-showing-window').click(function(){
+					location.hash = '#';
 					return false;
 				});
 			});
 		</script>
 		<div id="juicebox-container">
 			<div id="pnl-detail">
-				<div id="pnl-image-showing-window" class="showing-window">
+				<div id="pnl-image-showing-window" class="showing-window lightbox">
 					<img id="img-000" src="images/1022777647_1f55ea02d0_o.jpeg"/>
 					<img id="img-001" src="images/3415830592_1be619e794_b.jpeg" class="ele-hide"/>
 					<img id="img-002" src="images/3537421319_b60f676806_b.jpeg" class="ele-hide"/>

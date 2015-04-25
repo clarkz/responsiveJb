@@ -83,8 +83,14 @@
 		bottom: auto;
 		position: static;
 	}
+	.lightbox{
+		display: none;
+	}
 	#pnl-detail .showing-window{
 		height: 100%;
-		display: none;
+	}
+	.lightbox:target{
+		background: rgba(0,0,0,0.8);
+		display: block;
 	}
 }
