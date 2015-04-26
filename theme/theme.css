@@ -79,12 +79,14 @@
 @media (max-width: 768px) {
 	#juicebox-container{
 		overflow-y: scroll;
+		overflow-x: hidden;
 	}
 	#pnl-index .showing-window{
 		width: 100%;
 		height: auto;
 		bottom: auto;
 		position: static;
+		padding-top: 20px;
 	}
 	.lightbox{
 		display: none;

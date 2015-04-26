@@ -9,8 +9,19 @@
 		<script src="js/nano.js"></script>
 		<script>
 			function initialize(){
+				var reposition = function(){
+					var width = parseInt($('#pnl-index').width());
+					if(width >= 768){
+						$('#juicebox-container').addClass('lsm').removeClass('ssm');
+						$('#pnl-index-showing-window').css('padding-left', 0);
+						return;
+					}
+					$('#juicebox-container').addClass('ssm').removeClass('lsm');
+					width = (width % 95) / 2 + 'px';
+					$('#pnl-index-showing-window').css('padding-left', width);
+				};
 				window.onresize = function(event) {
-					
+					reposition();
 				};
 				var $ = query;
 				$('#pnl-index img').click(function(){
@@ -31,6 +42,8 @@
 					location.hash = '#';
 					return false;
 				});
+				
+				reposition();
 			}
 		</script>
 		<style type="text/css">

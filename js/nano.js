@@ -9,11 +9,40 @@ var domObjs = function(eles){
 		return self;
 	};
 	
-	self.attr = function(key){
+	self.attr = function(key, val){
+		if(!_elements || _elements.length <= 0) return val? self: '';
+		
+		if(!val) return _elements[0].getAttribute(key);
+		
+		for(var i = 0; i < _elements.length; i++){
+			_elements[i].setAttribute(key, val);
+		}
+		
+		return self;
+	};
+
+	self.css = function(key, val){
+		if(!_elements || _elements.length <= 0) return val? self: '';
+		
+		if(!val) return _elements[0].style[key];
+		
+		for(var i = 0; i < _elements.length; i++){
+			_elements[i].style[key] = val;
+		}
+		
+		return self;
+	};
+
+	self.width = function(){
 		if(!_elements || _elements.length <= 0) return '';
-		return _elements[0].getAttribute(key);
+		return _elements[0].offsetWidth;
 	};
 	
+	self.height = function(){
+		if(!_elements || _elements.length <= 0) return '';
+		return _elements[0].offsetHeight;
+	};
+
 	self.addClass = function(clsName){
 		if(!clsName) return self;
 	    var rxp = new RegExp( "\\s?\\b" + clsName + "\\b", "g" );
