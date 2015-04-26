@@ -11,7 +11,7 @@
 			function initialize(){
 				var reposition = function(){
 					var width = parseInt($('#pnl-index').width());
-					if(width >= 768){
+					if(width > 768){
 						$('#juicebox-container').addClass('lsm').removeClass('ssm');
 						$('#pnl-index-showing-window').css('padding-left', 0);
 						return;
