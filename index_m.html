@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Responsive Juicebox Prototype</title>
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="viewport" content="minimal-ui"/>
+		<meta id="jb-viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0, target-densitydpi=160"/>
+		<link type="text/css" rel="stylesheet" href="theme/theme.css"/>
+		<script src="js/nano.js"></script>
+		<script>
+			function initialize(){
+				var reposition = function(){
+					var width = parseInt($('#pnl-index').width());
+					if(width >= 768){
+						$('#juicebox-container').addClass('lsm').removeClass('ssm');
+						$('#pnl-index-showing-window').css('padding-left', 0);
+						return;
+					}
+					$('#juicebox-container').addClass('ssm').removeClass('lsm');
+					width = (width % 95) / 2 + 'px';
+					$('#pnl-index-showing-window').css('padding-left', width);
+				};
+				window.onresize = function(event) {
+					reposition();
+				};
+				var $ = query;
+				
+				var getImageId = function(idx){
+					var d = '0';
+					if(idx > 9) {
+						d = d + idx;
+					} else {
+						d = '00' + idx;
+					}
+					return 'img-' + d;
+				};
+				
+				var moveImage2 = function(targetId){
+					$('#pnl-image-showing-window img').addClass('unselected').removeClass('selected');
+					window.setTimeout(function(){
+						$('#pnl-image-showing-window img').addClass('ele-hide');
+						$('#' + targetId).removeClass('ele-hide');
+						window.setTimeout(function(){
+							$('#' + targetId).addClass('selected').removeClass('unselected');
+						}, 100);
+					}, 1000);
+					
+					location.hash = '#pnl-image-showing-window';
+				};
+				
+				$('#pnl-index img').click(function(){
+					var targetId = $(this).attr('id').replace('tmb', 'img');
+					moveImage2(targetId);
+					return false;
+				});
+				
+				$('#btn-hide-image').click(function(){
+					location.hash = '#';
+					return false;
+				});
+				
+				$('#btn-image-nav-right').click(function(){
+					var targetId = parseInt($('.selected').attr('id').replace('img-', ''));
+					targetId++;
+					if(targetId > 15) targetId = 0;
+					moveImage2(getImageId(targetId));
+					
+					return false;
+				});
+
+				$('#btn-image-nav-left').click(function(){
+					var targetId = parseInt($('.selected').attr('id').replace('img-', ''));
+					targetId--;
+					if(targetId < 0) targetId = 15;
+					moveImage2(getImageId(targetId));
+					
+					return false;
+				});
+				reposition();
+			}
+		</script>
+		<style type="text/css">
+			body {
+				margin: 0px;
+			}
+		</style>
+	</head>
+	<body onload="initialize()">
+		<div id="juicebox-container">
+			<div id="pnl-detail">
+				<div id="pnl-image-showing-window" class="showing-window lightbox">
+					<img id="img-000" src="images/1022777647_1f55ea02d0_o.jpeg" class="selected"/>
+					<img id="img-001" src="images/3415830592_1be619e794_b.jpeg" class="ele-hide"/>
+					<img id="img-002" src="images/3537421319_b60f676806_b.jpeg" class="ele-hide"/>
+					<img id="img-003" src="images/3831938401_a604ea97a2_b.jpeg" class="ele-hide"/>
+					<img id="img-004" src="images/3999816098_3cb9fa1ef4_b.jpeg" class="ele-hide"/>
+					<img id="img-005" src="images/4247991951_5115a5530b_b.jpeg" class="ele-hide"/>
+					<img id="img-006" src="images/4404535825_015c8364ca_b.jpeg" class="ele-hide"/>
+					<img id="img-007" src="images/4755619671_506f606a14_b.jpeg" class="ele-hide"/>
+					<img id="img-008" src="images/4821608660_0c00798788_b.jpeg" class="ele-hide"/>
+					<img id="img-009" src="images/5006532661_c1b5577b93_b.jpeg" class="ele-hide"/>
+					<img id="img-010" src="images/5006533323_93323f7d9b_b.jpeg" class="ele-hide"/>
+					<img id="img-011" src="images/5007140702_a8702cbdb9_b.jpeg" class="ele-hide"/>
+					<img id="img-012" src="images/5007142028_79cc0c88b3_b.jpeg" class="ele-hide"/>
+					<img id="img-013" src="images/5042287063_7b6d870420_b.jpeg" class="ele-hide"/>
+					<img id="img-014" src="images/5283944526_c5e23a3aef_b.jpeg" class="ele-hide"/>
+					<img id="img-015" src="images/5373458892_284dd3bff0_b.jpeg" class="ele-hide"/>
+					<div id="btn-image-nav-left" class="image-nav">&lt;</div>
+					<div id="btn-image-nav-right" class="image-nav">&gt;</div>
+					<div id="btn-hide-image" class="image-nav">X</div>
+				</div>
+			</div>
+			<div id="pnl-index">
+				<div id="pnl-index-showing-window" class="showing-window">
+					<img id="tmb-000" src="thumbs/1022777647_1f55ea02d0_o.jpeg"/>
+					<img id="tmb-001" src="thumbs/3415830592_1be619e794_b.jpeg"/>
+					<img id="tmb-002" src="thumbs/3537421319_b60f676806_b.jpeg"/>
+					<img id="tmb-003" src="thumbs/3831938401_a604ea97a2_b.jpeg"/>
+					<img id="tmb-004" src="thumbs/3999816098_3cb9fa1ef4_b.jpeg"/>
+					<img id="tmb-005" src="thumbs/4247991951_5115a5530b_b.jpeg"/>
+					<img id="tmb-006" src="thumbs/4404535825_015c8364ca_b.jpeg"/>
+					<img id="tmb-007" src="thumbs/4755619671_506f606a14_b.jpeg"/>
+					<img id="tmb-008" src="thumbs/4821608660_0c00798788_b.jpeg"/>
+					<img id="tmb-009" src="thumbs/5006532661_c1b5577b93_b.jpeg"/>
+					<img id="tmb-010" src="thumbs/5006533323_93323f7d9b_b.jpeg"/>
+					<img id="tmb-011" src="thumbs/5007140702_a8702cbdb9_b.jpeg"/>
+					<img id="tmb-012" src="thumbs/5007142028_79cc0c88b3_b.jpeg"/>
+					<img id="tmb-013" src="thumbs/5042287063_7b6d870420_b.jpeg"/>
+					<img id="tmb-014" src="thumbs/5283944526_c5e23a3aef_b.jpeg"/>
+					<img id="tmb-015" src="thumbs/5373458892_284dd3bff0_b.jpeg"/>
+				</div>
+			</div>
+		</div>
+		<!--END JUICEBOX-PRO EMBED.-->
+	</body>
+</html>
