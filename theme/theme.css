@@ -76,6 +76,43 @@
 	transition: opacity 1s;
 }
 
+.image-nav{
+	cursor: pointer;
+	color: white;
+	text-align: center;
+	padding-top: 10px;
+	position: absolute;
+	width: 40px;
+	height: 30px;
+	/* Firefox */
+	top: -moz-calc(50% - 20px);
+	/* WebKit */
+	top: -webkit-calc(50% - 20px);
+	/* Opera */
+	top: -o-calc(50% - 20px);
+	/* Standard */
+	top: calc(50% - 20px);
+}
+
+#btn-image-nav-left{
+	left:20px;
+}
+
+#btn-image-nav-right{
+	right:20px;
+}
+
+#btn-hide-image{
+	top: 20px;
+	right: 20px;
+	display: none;
+	background-color: rgba(0, 0, 0, .4);
+}
+
+.ssm #btn-hide-image{
+	display: block;
+}
+
 @media (max-width: 768px) {
 	#juicebox-container{
 		overflow-y: scroll;
